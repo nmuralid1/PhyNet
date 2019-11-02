@@ -1,5 +1,4 @@
-## Code for paper titled: 
-     `Physics Guided Design and Learning of Neural Networks for Predicting Drag Force on Particle Suspensions in Moving Fluids.`
+# Physics Guided Design and Learning of Neural Networks for Predicting Drag Force on Particle Suspensions in Moving Fluids.
 
 ## evaluation_and_visualization.py
 
