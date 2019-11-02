@@ -1,12 +1,12 @@
 # Physics Guided Design and Learning of Neural Networks for Predicting Drag Force on Particle Suspensions in Moving Fluids.
 
-## evaluation_and_visualization.py
+### evaluation_and_visualization.py
 
-## all_models.py
+### all_models.py
 
-## utils.py
+### utils.py
 
-## notebooks/
+### notebooks/
 - DNN.ipynb: This contains the feed-forward neural network model.
 - DNN+Pres.ipynb: The DNN+ model with dragforce + pressure field prediction.
 - DNN+Vel.ipynb:  The DNN+ model with dragforce + velocity field prediction.
