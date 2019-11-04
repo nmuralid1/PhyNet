@@ -209,71 +209,71 @@ class MTNN2(torch.nn.Module):
 
 
 #Model 2 Multi-task Feed-forward neural network.
-#class MTNN(torch.nn.Module):
-#    def __init__(self, input_size, hidden_size, output_size,output_size_aux, depth=2,depth_aux=2,shared_depth=1,device="cpu"):
-#        
-#        super(MTNN, self).__init__()
-#        
-#        #Drag Force Prediction Task
-#        self.depth = depth
-#        self.input_layer = torch.nn.Linear(input_size, hidden_size).to(device)
-#        self.hidden_layers = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) for _ in range(depth)]) 
-#        self.output_layer  = torch.nn.Linear(hidden_size, output_size).to(device)
-#        
-#        #Shared Layer
-#        self.shared_layers = nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) for _ in range(shared_depth)])
-#        
-#        #Auxiliary Task
-#        self.depth_aux = depth_aux
-#        self.input_layer_aux = torch.nn.Linear(input_size, hidden_size).to(device)
-#        self.hidden_layers_aux = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) for _ in range(depth_aux)]) 
-#        self.output_layer_aux  = torch.nn.Linear(hidden_size, output_size_aux).to(device)
-#        
-#        # setting activations 
-#        self.input_activation = torch.nn.Tanh()
-#        self.hidden_activation = torch.nn.ELU()
-#        self.output_activation = 'Linear'
-#        
-#    
-#    def forward(self, x):
-#        ######## Main-task ########
-#        
-#        # Input
-#        out = self.input_layer(x)
-#        out = self.input_activation(out)
-#        
-#        #Shared Hidden Layers
-#        for shared_layer in self.shared_layers:
-#            out = shared_layer(out)
-#            out = self.hidden_activation(out)
-#        
-#        #Main-task Hidden Layers
-#        for h_layer in self.hidden_layers:
-#            out = h_layer(out)
-#            out = self.hidden_activation(out)          
-#
-#        out = self.output_layer(out)
-#        ######## Main-task End #####
-#        
-#        
-#        ###### Auxiliary Task ######
-#        out_aux = self.input_layer_aux(x)
-#        out_aux = self.input_activation(out_aux)
-#        
-#        #Shared Hidden Layers
-#        for shared_layer in self.shared_layers:
-#            out_aux = shared_layer(out_aux)
-#            out_aux = self.hidden_activation(out_aux)
-#        
-#        #Auxiliary-Task Hidden Layers
-#        for h_layer_aux in self.hidden_layers_aux:
-#            out_aux = h_layer_aux(out_aux)
-#            out_aux = self.hidden_activation(out_aux)
-#        
-#        out_aux = self.output_layer_aux(out_aux)
-#        #Auxiliary Task End #######
-#
-#        return out,out_aux
+class MTNN(torch.nn.Module):
+    def __init__(self, input_size, hidden_size, output_size,output_size_aux, depth=2,depth_aux=2,shared_depth=1,device="cpu"):
+        
+        super(MTNN, self).__init__()
+        
+        #Drag Force Prediction Task
+        self.depth = depth
+        self.input_layer = torch.nn.Linear(input_size, hidden_size).to(device)
+        self.hidden_layers = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) for _ in range(depth)]) 
+        self.output_layer  = torch.nn.Linear(hidden_size, output_size).to(device)
+        
+        #Shared Layer
+        self.shared_layers = nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) for _ in range(shared_depth)])
+        
+        #Auxiliary Task
+        self.depth_aux = depth_aux
+        self.input_layer_aux = torch.nn.Linear(input_size, hidden_size).to(device)
+        self.hidden_layers_aux = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) for _ in range(depth_aux)]) 
+        self.output_layer_aux  = torch.nn.Linear(hidden_size, output_size_aux).to(device)
+        
+        # setting activations 
+        self.input_activation = torch.nn.Tanh()
+        self.hidden_activation = torch.nn.ELU()
+        self.output_activation = 'Linear'
+        
+    
+    def forward(self, x):
+        ######## Main-task ########
+        
+        # Input
+        out = self.input_layer(x)
+        out = self.input_activation(out)
+        
+        #Shared Hidden Layers
+        for shared_layer in self.shared_layers:
+            out = shared_layer(out)
+            out = self.hidden_activation(out)
+        
+        #Main-task Hidden Layers
+        for h_layer in self.hidden_layers:
+            out = h_layer(out)
+            out = self.hidden_activation(out)          
+
+        out = self.output_layer(out)
+        ######## Main-task End #####
+        
+        
+        ###### Auxiliary Task ######
+        out_aux = self.input_layer_aux(x)
+        out_aux = self.input_activation(out_aux)
+        
+        #Shared Hidden Layers
+        for shared_layer in self.shared_layers:
+            out_aux = shared_layer(out_aux)
+            out_aux = self.hidden_activation(out_aux)
+        
+        #Auxiliary-Task Hidden Layers
+        for h_layer_aux in self.hidden_layers_aux:
+            out_aux = h_layer_aux(out_aux)
+            out_aux = self.hidden_activation(out_aux)
+        
+        out_aux = self.output_layer_aux(out_aux)
+        #Auxiliary Task End #######
+
+        return out,out_aux
 
 #MTNN Model Wherein Pressure Model Is Predicted first, the outputs of which are passed into the DNN model predicting drag force.
 #class MTNN_Sequential(torch.nn.Module):
