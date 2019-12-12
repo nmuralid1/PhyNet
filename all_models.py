@@ -78,14 +78,14 @@ class MTNNConv_PressureVelocity(torch.nn.Module):
         self.input_layer = torch.nn.Linear(input_size, hidden_size).to(device)
 
         #Auxiliary Task Hidden Layers
-        self.pressurefield_hidden_layers=nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) 
-                                                        for _ in range(depth)])
-        
-        self.velocityfield_hidden_layers=nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) 
-                                                        for _ in range(depth)])
+        #self.pressurefield_hidden_layers=nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) 
+        #                                                for _ in range(depth)])
+        #
+        #self.velocityfield_hidden_layers=nn.ModuleList([torch.nn.Linear(hidden_size,hidden_size).to(device) 
+        #                                                for _ in range(depth)])
 
-        self.hidden_layers = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) 
-                                            for _ in range(depth)])
+        #self.hidden_layers = nn.ModuleList([torch.nn.Linear(hidden_size, hidden_size).to(device) 
+        #                                    for _ in range(depth)])
         
         self.hidden_size_conv = ((output_size_pressurefield - conv_filter_size)//1) + 1
         
