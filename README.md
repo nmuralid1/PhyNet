@@ -1,5 +1,5 @@
 
-# Physics Guided Design and Learning of Neural Networks for Predicting Drag Force on Particle Suspensions in Moving Fluids.
+# PhyNet:  Physics Guided Neural Networksfor Particle Drag Force Prediction in Assembly.
 
 ### evaluation_and_visualization.py
 
@@ -7,6 +7,7 @@
 
 ### utils.py
 
+#### Note: PhyDNN is the same as the PhyNet model. It is just named differently.
 ### notebooks/
 - DNN.ipynb: This contains the feed-forward neural network model.
 - DNN+Pres.ipynb: The DNN+ model with dragforce + pressure field prediction.
